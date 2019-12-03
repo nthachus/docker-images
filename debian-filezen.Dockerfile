@@ -16,7 +16,7 @@ RUN apt-get update -qq && \
    postgresql libpq-dev \
    nginx \
    ruby ruby-bundler zip unzip ruby-dev \
-   libmagic1 libarchive13 libmagickwand-dev \
+   file libarchive13 libmagickwand-dev \
    libreoffice-core libreoffice-writer libreoffice-calc libreoffice-impress && \
   apt-key add /tmp/nodesource.gpg.key && rm -f /tmp/nodesource* && \
   echo "deb https://deb.nodesource.com/node_12.x stretch main" >> /etc/apt/sources.list && \
@@ -26,8 +26,7 @@ RUN apt-get update -qq && \
   mv /tmp/bd/bitdefender-scanner_7.6-4_amd64.deb ~ && rm -rf /tmp/* && dpkg -i ~/bitdefender-scanner_7.6-4_amd64.deb && \
   rm -rf ~/bitdefender* /tmp/* /var/tmp/* /var/log/*.log && \
   echo "host	all		all		0.0.0.0/0		md5" >> /etc/postgresql/9.6/main/pg_hba.conf && \
-  echo "listen_addresses = '*'" >> /etc/postgresql/9.6/main/postgresql.conf && \
-  sed -i "s/# gzip_/gzip_/" /etc/nginx/nginx.conf
+  echo "listen_addresses = '*'" >> /etc/postgresql/9.6/main/postgresql.conf
 
 ENV LANG en_US.UTF-8
 
