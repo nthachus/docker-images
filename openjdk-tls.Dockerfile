@@ -4,6 +4,7 @@ FROM openjdk:${TAG}
 ARG JRE_PATH=/jre
 ARG BC_VERSION=jdk15to18-163
 
+# ADD jce_policy-6.tar.gz "${JAVA_HOME}$JRE_PATH/lib/security/"
 ADD https://www.bouncycastle.org/download/bcprov-$BC_VERSION.jar \
     https://www.bouncycastle.org/download/bctls-$BC_VERSION.jar "${JAVA_HOME}$JRE_PATH/lib/ext/"
 
