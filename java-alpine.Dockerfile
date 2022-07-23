@@ -16,6 +16,8 @@ RUN ln -sf /opt/$JAVA_PACKAGE* /opt/$JAVA_PACKAGE \
            /opt/jdk/lib/visualvm \
            /opt/jdk/lib/*javafx* \
            /opt/jdk/db \
+           /opt/jdk/demo \
+           /opt/jdk/sample \
            /opt/$JAVA_PACKAGE/man \
            /opt/jre/plugin \
            /opt/jre/bin/javaws \
