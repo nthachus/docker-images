@@ -1,12 +1,16 @@
-ARG TAG=2.23
+ARG DISTRO=debian
+ARG ARCH=
+ARG TAG=7-slim
+
 ARG JAVA_PACKAGE=jdk
 ARG JAVA_VERSION=6u45
 
-FROM nthachus/alpine-glibc:${TAG}
+FROM ${ARCH:+i386/}$DISTRO:$TAG
+ARG ARCH
 ARG JAVA_PACKAGE
 ARG JAVA_VERSION
 
-ADD $JAVA_PACKAGE-${JAVA_VERSION}_linux-x64_bin.tar.gz /opt
+ADD $JAVA_PACKAGE-${JAVA_VERSION}_linux-${ARCH:-x64}_bin.tar.gz /opt
 
 RUN ln -sf /opt/$JAVA_PACKAGE* /opt/$JAVA_PACKAGE \
  && ( [ ! -e /opt/jdk/jre ] || ln -sf /opt/jdk/jre /opt/jre ) \
@@ -48,7 +52,7 @@ RUN ln -sf /opt/$JAVA_PACKAGE* /opt/$JAVA_PACKAGE \
            /opt/jre/lib/plugin.jar
 
 # Multi-stage builds
-FROM nthachus/alpine-glibc:${TAG}
+FROM ${ARCH:+i386/}$DISTRO:$TAG
 ARG JAVA_PACKAGE
 ARG JAVA_VERSION
 
