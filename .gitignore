@@ -1,4 +1,6 @@
-.git/
 *.log
 *.bat
 *.cmd
+*.zip
+*.gz
+*.tgz
