@@ -24,7 +24,7 @@ ENV RVM_USER=${RVM_USER}
 ARG RVM_AUTOUPDATE=2
 
 # Install RVM
-RUN for k in mpapis pkuczynski; do curl -ksSL https://rvm.io/$k.asc | gpg --quiet --import -; done \
+RUN ( curl -ksSL 'https://rvm.io/{mpapis,pkuczynski}.asc' | gpg --quiet --import - ) \
  && ( curl -ksSL https://get.rvm.io | bash -s ${RVM_VERSION} ) \
  && echo "rvm_autoupdate_flag=${RVM_AUTOUPDATE}" >> /etc/rvmrc \
  && echo 'rvm_silence_path_mismatch_check_flag=1' >> /etc/rvmrc \
